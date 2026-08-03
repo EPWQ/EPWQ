@@ -212,11 +212,11 @@ export default function TermsAndConditionsPage() {
           </Paragraph>
         </SectionBlock>
 
-         <SectionBlock>
+        <SectionBlock>
           <SectionHeading>9. SMS / Text Messaging Program</SectionHeading>
           <Paragraph>
-             El Paso Water Quality sends appointment reminder text messages. By providing your mobile number, you agree to receive these SMS reminders. Message frequency varies (typically 1–3 messages per scheduled appointment). Message and data rates may apply. For help, text HELP or contact us at (915) 987-2546 / info@waterqualityinspection.org. To stop, text STOP at any time; you will receive a confirmation and no further messages. Carriers are not liable for delayed or undelivered messages.
-        </Paragraph>
+            El Paso Water Quality sends appointment reminder text messages. Customers who explicitly opt in on our forms may receive SMS appointment reminders. SMS consent is completely optional and is not a condition of receiving service or making a purchase. Message frequency varies (typically 1–3 messages per scheduled appointment). Message and data rates may apply. For help, text HELP or contact us at (915) 987-2546 / info@waterqualityinspection.org. To stop, text STOP at any time; you will receive a confirmation and no further messages. Carriers are not liable for delayed or undelivered messages.
+          </Paragraph>
         </SectionBlock>
 
         <SectionBlock>

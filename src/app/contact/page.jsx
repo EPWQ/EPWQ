@@ -154,7 +154,7 @@
 //               </FormRow>
 
 //               <p>
-//                 By submitting your phone number, you agree to receive SMS text appointment reminders from El Paso Water Quality. Message frequency varies. Message and data rates may apply. Reply STOP to opt out, HELP for help. See our Privacy Policy and Terms & Conditions.
+//                 I agree to receive SMS appointment reminders from El Paso Water Quality LLC. Consent is not required to receive service or make a purchase. Message frequency varies. Message and data rates may apply. Reply STOP to opt out or HELP for help. See our Privacy Policy and Terms & Conditions.
 //               </p>
 
 //               <Input
@@ -528,14 +528,6 @@ export default function ContactPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!formData.agreed) {
-      Swal.fire({
-        icon: "warning",
-        text: "Please check 'I agree' to the consent terms before submitting.",
-      });
-      return;
-    }
-
     Swal.fire({ text: "Sending message..." });
     Swal.showLoading();
 
@@ -544,6 +536,7 @@ export default function ContactPage() {
       email: formData.email,
       phone: formData.phone,
       message: formData.message,
+      smsConsent: formData.agreed,
       recipientEmail: "husandoval1517@gmail.com",
       websiteName: "El Paso Water Quality Inspection",
     };
@@ -658,14 +651,14 @@ export default function ContactPage() {
                   required
                 />
 
-                   <Input
-                type="email"
-                name="email"
-                placeholder="Email Address"
-                value={formData.email}
-                onChange={handleChange}
-                required
-              />
+                <Input
+                  type="email"
+                  name="email"
+                  placeholder="Email Address"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                />
                 <Input
                   type="tel"
                   name="phone"
@@ -676,21 +669,18 @@ export default function ContactPage() {
                 />
               </FormRow>
 
-          <ConsentWrapper>
-             <ConsentText>
-                  By submitting your phone number, you agree to receive SMS text appointment reminders from El Paso Water Quality LLC. Message frequency varies. Message and data rates may apply. Reply STOP to opt out, HELP for help. See our <StyledLink href="/privacypolicy">Privacy Policy</StyledLink> and <StyledLink href="/termsandconditions">Terms & Conditions</StyledLink>.
-                </ConsentText>
+              <ConsentWrapper>
                 <CheckboxLabel>
                   <CheckboxInput
                     type="checkbox"
                     name="agreed"
                     checked={formData.agreed}
                     onChange={handleChange}
-                    required
                   />
-                  <span className="agree-text">I agree</span>
+                  <ConsentText>
+                    I agree to receive SMS appointment reminders from El Paso Water Quality LLC. Consent is not required to receive service or make a purchase. Message frequency varies. Message and data rates may apply. Reply STOP to opt out or HELP for help. See our <StyledLink href="/privacypolicy">Privacy Policy</StyledLink> and <StyledLink href="/termsandconditions">Terms & Conditions</StyledLink>.
+                  </ConsentText>
                 </CheckboxLabel>
-               
               </ConsentWrapper>
 
            
@@ -891,16 +881,10 @@ const ConsentWrapper = styled.div`
 
 const CheckboxLabel = styled.label`
   display: flex;
-  align-items: center;
-  gap: 10px;
+  align-items: flex-start;
+  gap: 12px;
   cursor: pointer;
   user-select: none;
-
-  .agree-text {
-    font-weight: 600;
-    font-size: 1rem;
-    color: #1e293b;
-  }
 `;
 
 const CheckboxInput = styled.input`
@@ -909,13 +893,14 @@ const CheckboxInput = styled.input`
   accent-color: #1d4ed8;
   cursor: pointer;
   flex-shrink: 0;
+  margin-top: 2px;
 `;
 
-const ConsentText = styled.p`
+const ConsentText = styled.span`
   margin: 0;
-  font-size: 1rem;
-  line-height: 1.4;
-  color: #111;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #334155;
   word-break: break-word;
   overflow-wrap: break-word;
   hyphens: auto;
